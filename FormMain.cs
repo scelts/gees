@@ -187,12 +187,14 @@ namespace LandingRateMonitor
                 double sample_time = Convert.ToDouble(SAMPLE_RATE) * 0.001; //ms
                 double fpm = 60 * (Inair.ElementAt(BUFFER_SIZE / 2).Radio - Onground.ElementAt(BUFFER_SIZE / 2).Radio) / (sample_time * Convert.ToDouble(BUFFER_SIZE));
                 Int32 FPM = Convert.ToInt32(-fpm);
+                
                 double gees = 0;
-                foreach (PlaneInfoResponse res in Onground)
+                int Gforcemeterlen = 100 / SAMPLE_RATE; // take 100ms average for G force
+                for (int i = 0; i < Gforcemeterlen; i++)
                 {
-                    gees += res.Gforce;
+                    gees += Onground.ElementAt(i).Gforce;
                 }
-                gees /= Onground.Count();
+                gees /= Gforcemeterlen;
 
                 double incAngle = Math.Atan(Inair.Last().LateralSpeed / Inair.Last().ForwardSpeed) * 180 / Math.PI;
 
@@ -371,7 +373,6 @@ namespace LandingRateMonitor
         static extern bool AnimateWindow(IntPtr hwnd, int time, int flags);
 
         #endregion
-
     }
 }
 
