@@ -1,165 +1,59 @@
-﻿
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-
-
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+  <img src="https://github.com/scelts/msfslandingrate/blob/master/Icons/icon.png" alt="Logo" width="32" height="32">
 
-  <h3 align="center">Landing Rate Display for Microsoft Flight Simulator 2020</h3>
+  <h1 align="center">Gees</h3>
 
   <p align="center">
-    YOUR_SHORT_DESCRIPTION
-    <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
-  </p>
+  In game landing analysis for Microsoft Flight Simulator 2020.
 </p>
 
 
+## How to Install/Use?
+Download the latest release from [here](https://github.com/scelts/msfslandingrate/releases) (Assets -> File-that-is-not-source-code.zip). Unzip to your favourite location for MSFS2020 landing monitors, and start ```Gees.exe```. 
+You'll see a window like this in the bottom right. 
 
-<!-- TABLE OF CONTENTS -->
-## Table of Contents
+![Screenshot](https://github.com/scelts/msfslandingrate/blob/master/img/app_screenshot.png "App screenshot")
 
-* [About the Project](#about-the-project)
-  * [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Usage](#usage)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
-* [License](#license)
-* [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
+The app itself runs in the background, and you can find this status window in the status trey, as this icon:
 
+![Trey Icon](https://github.com/scelts/msfslandingrate/blob/master/img/tray_icon.png "Trey icon")
 
+That's it. When you start the sim the app will automatically connect and when you land, you'll get a window similar to this slide out top-left:
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+![Slider](https://github.com/scelts/msfslandingrate/blob/master/img/slider.png "Slider")
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+You can start it before, or after the MSFS, it doesn't matter.
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`
+## How to Uninstall?
+Delete the folder where the Gees.exe resides.
+## What is measured?
+### Descent rate at the landing in feet per minute
+This is calculated by queriing the aircraft distance from the ground over time, every 20ms. After touchdown is detected, one takes the average descent rate in the last 100ms of flight.
+> The landing rate might differ a bit from the one in landing challenges. This is because I have no idea how Asobo calculates it, and I cannot query this value. Should be the same ballpark figure, it's anyway arbitrary how you do it.
 
+> You cannot query only the vertical rate. This was possible in FSX where you have "flat" runways, but if the runway is sloping, this doesn't work. 
+### G force at the touchdown
+Average G force at which the airplane is subjected 100ms after landing. Should be in theory related to the descent rate, undergarriage dampers and how much the passengers are nervous.
+### Airspeed and ground speed at the touchdown
+Self explanatory.
+### Wind speed and direction at the touchdown
+There's a nice arrow, showing where the wind is blowing from
+### Sideslip at the touchdown
+Did you do the proper de-crab manouver, or the plane is going sideways on touchdown in the crosswind? The higher, the worse. Keep it close to 0 degrees or you might break the gear, or pop the tire (well, probably not in the sim).
 
-### Built With
-
-* []()
-* []()
-* []()
-
-
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-To get a local copy up and running follow these simple steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-```sh
-npm install npm@latest -g
+## How to compile it
+It's a c# application (winforms...). You'll need a Visual Studio with .NET 4.7 and the following nuget libraries:
 ```
-
-### Installation
-
-1. Clone the repo
-```sh
-git clone https://github.com/github_username/repo_name.git
+CTrue.FsConnect
+FontAwesome.Sharp
+Octokit
+PrettyBin
 ```
-2. Install NPM packages
-```sh
-npm install
-```
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
-
-<!-- CONTACT -->
 ## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
-
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Use the [reddit page](https://www.reddit.com/r/MSFS2020LandingRate), or here, the [Issues page](https://github.com/scelts/msfslandingrate/issues) to report bugs and suggestions. Please do.
 
 
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
-
-
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=flat-square
-[contributors-url]: https://github.com/github_username/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=flat-square
-[forks-url]: https://github.com/github_username/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=flat-square
-[stars-url]: https://github.com/github_username/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=flat-square
-[issues-url]: https://github.com/github_username/repo/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo.svg?style=flat-square
-[license-url]: https://github.com/github_username/repo/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/github_username
-[product-screenshot]: images/screenshot.png
+## License
+Distributed under the GNU General Public License v3.0 License. See `LICENSE` for more information. (Whatever you do with this, keep it open source)
