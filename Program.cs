@@ -15,6 +15,7 @@ namespace LandingRateMonitor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(FormMain.UnhandledThreadExceptionHandler);
             Application.Run(new FormMain());
         }
     }
