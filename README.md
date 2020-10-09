@@ -23,6 +23,7 @@ The app itself runs in the background, and you can find this status window in th
 That's it. When you start the sim the app will automatically connect and when you land, you'll get a window similar to this slide out top-left:
 
 ![Slider](https://github.com/scelts/msfslandingrate/blob/master/img/slider.png "Slider")
+![MSFS view](https://github.com/scelts/msfslandingrate/blob/master/img/ingame.png "MSFS view")
 
 You can start it before, or after the MSFS, it doesn't matter.
 
