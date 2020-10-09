@@ -47,12 +47,13 @@
             this.iconGithub = new FontAwesome.Sharp.IconPictureBox();
             this.iconReddit = new FontAwesome.Sharp.IconPictureBox();
             this.iconFAS = new FontAwesome.Sharp.IconPictureBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelAbout = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
+            this.labelVersion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iconConnStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconDown)).BeginInit();
             this.panel1.SuspendLayout();
@@ -197,6 +198,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.labelVersion);
             this.panel1.Controls.Add(this.iconGithub);
             this.panel1.Controls.Add(this.linkLabelUpdate);
             this.panel1.Controls.Add(this.iconReddit);
@@ -249,25 +251,25 @@
             this.iconFAS.TabStop = false;
             this.iconFAS.Click += new System.EventHandler(this.iconFAS_Click);
             // 
-            // label4
+            // labelAbout
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
-            this.label4.Location = new System.Drawing.Point(8, 78);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(323, 46);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "In game landing analysis for Microsoft Flight Simulator 2020";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelAbout.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelAbout.AutoSize = true;
+            this.labelAbout.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAbout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
+            this.labelAbout.Location = new System.Drawing.Point(8, 78);
+            this.labelAbout.Name = "labelAbout";
+            this.labelAbout.Size = new System.Drawing.Size(323, 46);
+            this.labelAbout.TabIndex = 6;
+            this.labelAbout.Text = "In game landing analysis for Microsoft Flight Simulator 2020";
+            this.labelAbout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.labelAbout, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 0);
@@ -347,6 +349,17 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // labelVersion
+            // 
+            this.labelVersion.AutoSize = true;
+            this.labelVersion.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
+            this.labelVersion.Location = new System.Drawing.Point(117, 12);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(82, 19);
+            this.labelVersion.TabIndex = 14;
+            this.labelVersion.Text = "labelVersion";
+            // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -398,12 +411,13 @@
         private FontAwesome.Sharp.IconPictureBox iconGithub;
         private FontAwesome.Sharp.IconPictureBox iconReddit;
         private FontAwesome.Sharp.IconPictureBox iconFAS;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelAbout;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelVersion;
     }
 }
 

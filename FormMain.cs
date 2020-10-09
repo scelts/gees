@@ -74,6 +74,10 @@ namespace LandingRateMonitor
         public FormMain()
         {
             InitializeComponent();
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
+            labelVersion.Text = fvi.FileVersion;
+
             timerRead.Interval = SAMPLE_RATE;
             button1.Select();
             iconGithub.BackgroundImage = IconChar.Github.ToBitmap(32, Color.White);
@@ -322,6 +326,7 @@ namespace LandingRateMonitor
             {
                 if (e.Result != null)
                 {
+                    labelVersion.Visible = false;
                     linkLabelUpdate.Visible = true;
                     updateUri = (e.Result as Release).HtmlUrl;
                 }
