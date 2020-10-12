@@ -371,7 +371,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
             this.groupBox3.Location = new System.Drawing.Point(8, 428);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(386, 100);
+            this.groupBox3.Size = new System.Drawing.Size(386, 93);
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Status";
@@ -385,7 +385,7 @@
             this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 23);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(380, 74);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(380, 67);
             this.flowLayoutPanel4.TabIndex = 0;
             // 
             // buttonUpdate
