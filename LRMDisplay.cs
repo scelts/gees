@@ -63,6 +63,7 @@ namespace Gees
         public LRMDisplay(int FPM, double Gees, double Airspeed, double Groundspeed, double Headwind, double Crosswind, double Slip)
         {
             InitializeComponent();
+
             iconPictureFPM.BackgroundImage = IconChar.PlaneArrival.ToBitmap(32, Color.White);
             labelFPM.Text = FPM.ToString("0 fpm");
             if (Gees < 1.3)

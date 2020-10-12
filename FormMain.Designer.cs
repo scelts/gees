@@ -39,7 +39,6 @@
             this.iconConnStatus = new FontAwesome.Sharp.IconPictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.labelConn = new System.Windows.Forms.Label();
-            this.linkLabelUpdate = new System.Windows.Forms.LinkLabel();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.labelVersion = new System.Windows.Forms.Label();
@@ -49,13 +48,18 @@
             this.labelAbout = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.buttonLandings = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonLandings = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.iconConnStatus)).BeginInit();
@@ -64,10 +68,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconFAS)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -109,10 +117,10 @@
             this.iconConnStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(53)))), ((int)(((byte)(87)))));
             this.iconConnStatus.BackgroundImage = global::Gees.Properties.Resources.disconnected;
             this.iconConnStatus.Cursor = System.Windows.Forms.Cursors.Default;
-            this.iconConnStatus.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.iconConnStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
             this.iconConnStatus.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconConnStatus.IconColor = System.Drawing.SystemColors.ControlText;
-            this.iconConnStatus.Location = new System.Drawing.Point(3, 3);
+            this.iconConnStatus.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
+            this.iconConnStatus.Location = new System.Drawing.Point(3, 5);
             this.iconConnStatus.Name = "iconConnStatus";
             this.iconConnStatus.Size = new System.Drawing.Size(32, 32);
             this.iconConnStatus.TabIndex = 14;
@@ -124,7 +132,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
-            this.label3.Location = new System.Drawing.Point(3, 22);
+            this.label3.Location = new System.Drawing.Point(3, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 32);
             this.label3.TabIndex = 5;
@@ -137,37 +145,22 @@
             this.labelConn.AutoSize = true;
             this.labelConn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelConn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
-            this.labelConn.Location = new System.Drawing.Point(41, 9);
+            this.labelConn.Location = new System.Drawing.Point(41, 11);
             this.labelConn.Name = "labelConn";
-            this.labelConn.Size = new System.Drawing.Size(181, 20);
+            this.labelConn.Size = new System.Drawing.Size(99, 20);
             this.labelConn.TabIndex = 15;
-            this.labelConn.Text = "No Running Sim Detected";
+            this.labelConn.Text = "Disconnected";
             this.labelConn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // linkLabelUpdate
-            // 
-            this.linkLabelUpdate.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(57)))), ((int)(((byte)(70)))));
-            this.linkLabelUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabelUpdate.AutoSize = true;
-            this.linkLabelUpdate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabelUpdate.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(57)))), ((int)(((byte)(70)))));
-            this.linkLabelUpdate.Location = new System.Drawing.Point(91, 0);
-            this.linkLabelUpdate.Name = "linkLabelUpdate";
-            this.linkLabelUpdate.Size = new System.Drawing.Size(130, 20);
-            this.linkLabelUpdate.TabIndex = 8;
-            this.linkLabelUpdate.TabStop = true;
-            this.linkLabelUpdate.Text = "Updates Available";
-            this.linkLabelUpdate.Visible = false;
-            this.linkLabelUpdate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelUpdate_LinkClicked);
             // 
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.button2.AutoSize = true;
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(57)))), ((int)(((byte)(70)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
-            this.button2.Location = new System.Drawing.Point(307, 20);
+            this.button2.Location = new System.Drawing.Point(307, 22);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(76, 36);
             this.button2.TabIndex = 9;
@@ -181,7 +174,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(3, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(181, 20);
             this.label1.TabIndex = 16;
@@ -203,24 +196,25 @@
             // 
             this.iconGithub.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(53)))), ((int)(((byte)(87)))));
             this.iconGithub.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconGithub.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.iconGithub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
             this.iconGithub.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconGithub.IconColor = System.Drawing.SystemColors.ControlText;
-            this.iconGithub.Location = new System.Drawing.Point(89, 3);
+            this.iconGithub.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
+            this.iconGithub.Location = new System.Drawing.Point(3, 3);
             this.iconGithub.Name = "iconGithub";
             this.iconGithub.Size = new System.Drawing.Size(32, 32);
             this.iconGithub.TabIndex = 11;
             this.iconGithub.TabStop = false;
+            this.iconGithub.UseGdi = true;
             this.iconGithub.Click += new System.EventHandler(this.iconGithub_Click);
             // 
             // iconReddit
             // 
             this.iconReddit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(53)))), ((int)(((byte)(87)))));
             this.iconReddit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconReddit.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.iconReddit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
             this.iconReddit.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconReddit.IconColor = System.Drawing.SystemColors.ControlText;
-            this.iconReddit.Location = new System.Drawing.Point(127, 3);
+            this.iconReddit.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
+            this.iconReddit.Location = new System.Drawing.Point(41, 3);
             this.iconReddit.Name = "iconReddit";
             this.iconReddit.Size = new System.Drawing.Size(32, 32);
             this.iconReddit.TabIndex = 12;
@@ -231,12 +225,12 @@
             // 
             this.iconFAS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(53)))), ((int)(((byte)(87)))));
             this.iconFAS.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconFAS.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.iconFAS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
             this.iconFAS.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconFAS.IconColor = System.Drawing.SystemColors.ControlText;
-            this.iconFAS.Location = new System.Drawing.Point(165, 3);
+            this.iconFAS.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
+            this.iconFAS.Location = new System.Drawing.Point(79, 3);
             this.iconFAS.Name = "iconFAS";
-            this.iconFAS.Size = new System.Drawing.Size(32, 34);
+            this.iconFAS.Size = new System.Drawing.Size(32, 32);
             this.iconFAS.TabIndex = 13;
             this.iconFAS.TabStop = false;
             this.iconFAS.Click += new System.EventHandler(this.iconFAS_Click);
@@ -247,7 +241,7 @@
             this.labelAbout.AutoSize = true;
             this.labelAbout.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAbout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
-            this.labelAbout.Location = new System.Drawing.Point(8, 87);
+            this.labelAbout.Location = new System.Drawing.Point(8, 91);
             this.labelAbout.Name = "labelAbout";
             this.labelAbout.Size = new System.Drawing.Size(375, 46);
             this.labelAbout.TabIndex = 6;
@@ -259,26 +253,26 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.labelAbout, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel4, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel5, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox2, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox3, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox4, 0, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel1.RowCount = 7;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(402, 330);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(402, 575);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
             // tableLayoutPanel4
@@ -286,7 +280,7 @@
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.88439F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.11561F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
             this.tableLayoutPanel4.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.button2, 2, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -294,12 +288,46 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(386, 76);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(386, 80);
             this.tableLayoutPanel4.TabIndex = 11;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.labelVersion);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(8, 140);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(386, 24);
+            this.flowLayoutPanel3.TabIndex = 16;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.flowLayoutPanel2);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
+            this.groupBox1.Location = new System.Drawing.Point(8, 256);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(386, 80);
+            this.groupBox1.TabIndex = 19;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Slider Settings";
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.checkBox1);
+            this.flowLayoutPanel2.Controls.Add(this.numericUpDown1);
+            this.flowLayoutPanel2.Controls.Add(this.button1);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 23);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(380, 54);
+            this.flowLayoutPanel2.TabIndex = 15;
             // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button1.AutoSize = true;
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(123)))), ((int)(((byte)(157)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -313,9 +341,95 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.flowLayoutPanel1);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
+            this.groupBox2.Location = new System.Drawing.Point(8, 170);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(386, 80);
+            this.groupBox2.TabIndex = 20;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Community";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.iconGithub);
+            this.flowLayoutPanel1.Controls.Add(this.iconReddit);
+            this.flowLayoutPanel1.Controls.Add(this.iconFAS);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 23);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(380, 54);
+            this.flowLayoutPanel1.TabIndex = 14;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.flowLayoutPanel4);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
+            this.groupBox3.Location = new System.Drawing.Point(8, 428);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(386, 139);
+            this.groupBox3.TabIndex = 21;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Status";
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.iconConnStatus);
+            this.flowLayoutPanel4.Controls.Add(this.labelConn);
+            this.flowLayoutPanel4.Controls.Add(this.buttonUpdate);
+            this.flowLayoutPanel4.Controls.Add(this.label1);
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 23);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(380, 113);
+            this.flowLayoutPanel4.TabIndex = 0;
+            // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonUpdate.AutoSize = true;
+            this.buttonUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(218)))), ((int)(((byte)(220)))));
+            this.buttonUpdate.Enabled = false;
+            this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUpdate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
+            this.buttonUpdate.Location = new System.Drawing.Point(146, 3);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(119, 36);
+            this.buttonUpdate.TabIndex = 17;
+            this.buttonUpdate.Text = "Up to date";
+            this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.flowLayoutPanel5);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(238)))));
+            this.groupBox4.Location = new System.Drawing.Point(8, 342);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(386, 80);
+            this.groupBox4.TabIndex = 22;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Landings";
+            // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.Controls.Add(this.buttonLandings);
+            this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 23);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(380, 54);
+            this.flowLayoutPanel5.TabIndex = 0;
+            // 
             // buttonLandings
             // 
             this.buttonLandings.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonLandings.AutoSize = true;
             this.buttonLandings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(123)))), ((int)(((byte)(157)))));
             this.buttonLandings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLandings.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -323,63 +437,11 @@
             this.buttonLandings.Location = new System.Drawing.Point(3, 3);
             this.buttonLandings.Name = "buttonLandings";
             this.buttonLandings.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.buttonLandings.Size = new System.Drawing.Size(80, 36);
+            this.buttonLandings.Size = new System.Drawing.Size(126, 36);
             this.buttonLandings.TabIndex = 11;
-            this.buttonLandings.Text = "Landings";
+            this.buttonLandings.Text = "My Landings";
             this.buttonLandings.UseVisualStyleBackColor = false;
             this.buttonLandings.Click += new System.EventHandler(this.buttonLandings_Click);
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.buttonLandings);
-            this.flowLayoutPanel1.Controls.Add(this.iconGithub);
-            this.flowLayoutPanel1.Controls.Add(this.iconReddit);
-            this.flowLayoutPanel1.Controls.Add(this.iconFAS);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(8, 166);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(386, 40);
-            this.flowLayoutPanel1.TabIndex = 14;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.checkBox1);
-            this.flowLayoutPanel2.Controls.Add(this.numericUpDown1);
-            this.flowLayoutPanel2.Controls.Add(this.button1);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(8, 212);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(386, 40);
-            this.flowLayoutPanel2.TabIndex = 15;
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Controls.Add(this.labelVersion);
-            this.flowLayoutPanel3.Controls.Add(this.linkLabelUpdate);
-            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(8, 136);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(386, 24);
-            this.flowLayoutPanel3.TabIndex = 16;
-            // 
-            // flowLayoutPanel4
-            // 
-            this.flowLayoutPanel4.Controls.Add(this.iconConnStatus);
-            this.flowLayoutPanel4.Controls.Add(this.labelConn);
-            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(8, 258);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(386, 34);
-            this.flowLayoutPanel4.TabIndex = 17;
-            // 
-            // flowLayoutPanel5
-            // 
-            this.flowLayoutPanel5.Controls.Add(this.label1);
-            this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(8, 298);
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(386, 24);
-            this.flowLayoutPanel5.TabIndex = 18;
             // 
             // checkBox1
             // 
@@ -418,7 +480,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(53)))), ((int)(((byte)(87)))));
-            this.ClientSize = new System.Drawing.Size(402, 330);
+            this.ClientSize = new System.Drawing.Size(402, 575);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -428,6 +490,7 @@
             this.Name = "FormMain";
             this.ShowInTaskbar = false;
             this.Text = "MSFS 2020 Landing Rate Monitor";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.iconConnStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconGithub)).EndInit();
@@ -437,13 +500,17 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel4.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.flowLayoutPanel5.ResumeLayout(false);
             this.flowLayoutPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -462,7 +529,6 @@
         private System.Windows.Forms.Label label3;
         private FontAwesome.Sharp.IconPictureBox iconConnStatus;
         private System.Windows.Forms.Label labelConn;
-        private System.Windows.Forms.LinkLabel linkLabelUpdate;
         private System.Windows.Forms.Label label1;
         private FontAwesome.Sharp.IconPictureBox iconGithub;
         private FontAwesome.Sharp.IconPictureBox iconReddit;
@@ -478,8 +544,13 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.Button buttonUpdate;
     }
 }
 

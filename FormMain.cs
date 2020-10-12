@@ -81,9 +81,9 @@ namespace Gees
 
             timerRead.Interval = SAMPLE_RATE;
             button1.Select();
-            iconGithub.BackgroundImage = IconChar.Github.ToBitmap(32, Color.White);
-            iconReddit.BackgroundImage = IconChar.Reddit.ToBitmap(32, Color.White);
-            iconFAS.BackgroundImage = IconChar.FontAwesome.ToBitmap(32, Color.White);
+            iconGithub.IconChar = IconChar.Github;
+            iconReddit.IconChar = IconChar.Reddit;
+            iconFAS.IconChar = IconChar.FontAwesome;
 
             Rectangle workingArea = Screen.GetWorkingArea(this);
             this.Location = new Point(workingArea.Right - Size.Width - 20,
@@ -100,6 +100,7 @@ namespace Gees
             definition.Add(new SimProperty("VELOCITY BODY Z", "Feet per second", SIMCONNECT_DATATYPE.FLOAT64));
             definition.Add(new SimProperty("G FORCE", "GForce", SIMCONNECT_DATATYPE.FLOAT64));
             definition.Add(new SimProperty("PLANE ALT ABOVE GROUND", "Feet", SIMCONNECT_DATATYPE.FLOAT64));
+      
         }
 
         #region Reading and processing the Simconnect data
@@ -231,7 +232,7 @@ namespace Gees
             else
             {
                 iconConnStatus.BackgroundImage = Properties.Resources.disconnected;
-                labelConn.Text = "No Running Sim Detected";
+                labelConn.Text = "Disconnected";
                 this.Icon = Properties.Resources.offline;
                 notifyIcon.Icon = Properties.Resources.offline;
             }
@@ -262,6 +263,7 @@ namespace Gees
         private void button2_Click(object sender, EventArgs e)
         {
             notifyIcon.Visible = false;
+            Properties.Settings.Default.Save();
             Environment.Exit(1);
         }
 
@@ -313,16 +315,17 @@ namespace Gees
         }
         #endregion
 
+
         #region Update checks from github
-        private void linkLabelUpdate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void buttonUpdate_Click(object sender, EventArgs e)
         {
             Process.Start(updateUri);
         }
 
         private void backgroundWorkerUpdate_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            var client = new GitHubClient(new ProductHeaderValue("EncryptiorDotNetApp"));
-            var releases = client.Repository.Release.GetAll("scelts", "msfslandingrate").Result;
+            var client = new GitHubClient(new ProductHeaderValue("Gees"));
+            var releases = client.Repository.Release.GetAll("scelts", "gees").Result;
             var latest = releases[0];
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
             System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
@@ -341,6 +344,7 @@ namespace Gees
         {
             if (e.Error != null)
             {
+                buttonUpdate.Text = "Connection error";
                 //  MessageBox.Show(e.Error.Message);
                 //error handler, tbd
             }
@@ -348,8 +352,9 @@ namespace Gees
             {
                 if (e.Result != null)
                 {
-                    labelVersion.Visible = false;
-                    linkLabelUpdate.Visible = true;
+                    buttonUpdate.Text = "Updates Available";
+                    buttonUpdate.BackColor = Color.FromArgb(230, 57, 70);
+                    buttonUpdate.Enabled = true;
                     updateUri = (e.Result as Release).HtmlUrl;
                 }
             }
@@ -436,6 +441,7 @@ namespace Gees
         static extern bool AnimateWindow(IntPtr hwnd, int time, int flags);
 
         #endregion
+
     }
 }
 

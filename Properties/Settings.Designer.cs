@@ -37,7 +37,7 @@ namespace Gees.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool AutoClose {
             get {
                 return ((bool)(this["AutoClose"]));
@@ -92,6 +92,18 @@ namespace Gees.Properties {
             }
             set {
                 this["LandingsMaximised"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ScreenIndex {
+            get {
+                return ((int)(this["ScreenIndex"]));
+            }
+            set {
+                this["ScreenIndex"] = value;
             }
         }
     }
