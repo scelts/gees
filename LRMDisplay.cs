@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using FontAwesome;
 using FontAwesome.Sharp;
 
-namespace LandingRateMonitor
+namespace Gees
 {
     public partial class LRMDisplay : Form
     {
@@ -90,8 +90,11 @@ namespace LandingRateMonitor
             windDir.DrawImage(iconPictureWind.BackgroundImage, new PointF(0,0));
             labelWIND.Text = Convert.ToInt32(windamp) + " kt";
             labelANG.Text = Slip.ToString("0.##º Left Sideslip; 0.##º Right Sideslip;");
-
-            timerClose.Start();
+            if (Properties.Settings.Default.AutoClose)
+            {
+                timerClose.Interval = Convert.ToInt32(Properties.Settings.Default.CloseAfter) * 1000;
+                timerClose.Start();
+            }
         }
 
         private void LRMDisplay_Load(object sender, EventArgs e)

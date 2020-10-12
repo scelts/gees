@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LandingRateMonitor.Properties {
+namespace Gees.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -32,6 +32,66 @@ namespace LandingRateMonitor.Properties {
             }
             set {
                 this["MyVersion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AutoClose {
+            get {
+                return ((bool)(this["AutoClose"]));
+            }
+            set {
+                this["AutoClose"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public decimal CloseAfter {
+            get {
+                return ((decimal)(this["CloseAfter"]));
+            }
+            set {
+                this["CloseAfter"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 19")]
+        public global::System.Drawing.Point LandingsLocation {
+            get {
+                return ((global::System.Drawing.Point)(this["LandingsLocation"]));
+            }
+            set {
+                this["LandingsLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1564, 594")]
+        public global::System.Drawing.Size LandingsSize {
+            get {
+                return ((global::System.Drawing.Size)(this["LandingsSize"]));
+            }
+            set {
+                this["LandingsSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LandingsMaximised {
+            get {
+                return ((bool)(this["LandingsMaximised"]));
+            }
+            set {
+                this["LandingsMaximised"] = value;
             }
         }
     }

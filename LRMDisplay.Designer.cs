@@ -1,4 +1,4 @@
-﻿namespace LandingRateMonitor
+﻿namespace Gees
 {
     partial class LRMDisplay
     {

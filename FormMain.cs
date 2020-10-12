@@ -14,7 +14,7 @@ using System.IO;
 using System.Data.SqlClient;
 using System.Collections.Concurrent;
 
-namespace LandingRateMonitor
+namespace Gees
 {
     public enum Requests
     {
@@ -25,7 +25,7 @@ namespace LandingRateMonitor
     public struct PlaneInfoResponse
     {
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
-        public String Title;
+        public string Type;
         public bool OnGround;
         public double WindLat;
         public double WindHead;
@@ -74,6 +74,7 @@ namespace LandingRateMonitor
         public FormMain()
         {
             InitializeComponent();
+            MakeLogIfEmpty();
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
             System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
             labelVersion.Text = fvi.FileVersion;
@@ -83,14 +84,13 @@ namespace LandingRateMonitor
             iconGithub.BackgroundImage = IconChar.Github.ToBitmap(32, Color.White);
             iconReddit.BackgroundImage = IconChar.Reddit.ToBitmap(32, Color.White);
             iconFAS.BackgroundImage = IconChar.FontAwesome.ToBitmap(32, Color.White);
-            iconDown.BackgroundImage = IconChar.ArrowDown.ToBitmap(32, Color.White);
 
             Rectangle workingArea = Screen.GetWorkingArea(this);
-            this.Location = new Point(workingArea.Right - Size.Width-20,
-                                      workingArea.Bottom - Size.Height-20);
+            this.Location = new Point(workingArea.Right - Size.Width - 20,
+                                      workingArea.Bottom - Size.Height - 20);
             backgroundWorkerUpdate.RunWorkerAsync();
             fsConnect.FsDataReceived += HandleReceivedFsData;
-            definition.Add(new SimProperty("Title", null, SIMCONNECT_DATATYPE.STRING256));
+            definition.Add(new SimProperty("TITLE", null, SIMCONNECT_DATATYPE.STRING256));
             definition.Add(new SimProperty("SIM ON GROUND", "Bool", SIMCONNECT_DATATYPE.INT32));
             definition.Add(new SimProperty("AIRCRAFT WIND X", "Knots", SIMCONNECT_DATATYPE.FLOAT64));
             definition.Add(new SimProperty("AIRCRAFT WIND Z", "Knots", SIMCONNECT_DATATYPE.FLOAT64));
@@ -103,9 +103,6 @@ namespace LandingRateMonitor
         }
 
         #region Reading and processing the Simconnect data
-
-
-
         private void timerRead_Tick(object sender, EventArgs e)
         {
             if (!ShowLanding)
@@ -147,7 +144,7 @@ namespace LandingRateMonitor
                         }
                         if (r.OnGround)
                         {
-                            Onground.Add(r); 
+                            Onground.Add(r);
                             if (Onground.Count > BUFFER_SIZE)
                             {
                                 Onground.RemoveAt(0);
@@ -161,7 +158,7 @@ namespace LandingRateMonitor
                         {
                             Inair.Add(r);
                             if (Inair.Count > BUFFER_SIZE)
-                            {           
+                            {
                                 Inair.RemoveAt(0);
                             }
                             Onground.Clear();
@@ -191,7 +188,7 @@ namespace LandingRateMonitor
                 double sample_time = Convert.ToDouble(SAMPLE_RATE) * 0.001; //ms
                 double fpm = 60 * (Inair.ElementAt(BUFFER_SIZE / 2).Radio - Onground.ElementAt(BUFFER_SIZE / 2).Radio) / (sample_time * Convert.ToDouble(BUFFER_SIZE));
                 Int32 FPM = Convert.ToInt32(-fpm);
-                
+
                 double gees = 0;
                 int Gforcemeterlen = 100 / SAMPLE_RATE; // take 100ms average for G force
                 for (int i = 0; i < Gforcemeterlen; i++)
@@ -202,6 +199,7 @@ namespace LandingRateMonitor
 
                 double incAngle = Math.Atan(Inair.Last().LateralSpeed / Inair.Last().ForwardSpeed) * 180 / Math.PI;
 
+                EnterLog(Inair.First().Type, FPM, gees, Inair.Last().AirspeedInd, Inair.Last().GroundSpeed, Inair.Last().WindHead, Inair.Last().WindLat, incAngle);
                 LRMDisplay form = new LRMDisplay(FPM, gees, Inair.Last().AirspeedInd, Inair.Last().GroundSpeed, Inair.Last().WindHead, Inair.Last().WindLat, incAngle);
                 form.Show();
                 timerWait.Stop();
@@ -213,7 +211,7 @@ namespace LandingRateMonitor
             {
                 //some params are missing. likely the user is in the main menu. ignore
             }
-         }
+        }
         #endregion
 
         #region AutoConnection to sim
@@ -289,6 +287,30 @@ namespace LandingRateMonitor
             Process.Start("https://fontawesome.com/");
         }
 
+        private void buttonLandings_Click(object sender, EventArgs e)
+        {
+            FormHistory form1 = new FormHistory();
+            form1.Show();
+        }
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.AutoClose = checkBox1.Checked;
+            Properties.Settings.Default.Save();
+            if (!checkBox1.Checked)
+            {
+                numericUpDown1.Enabled = false;
+            }
+            else
+            {
+                numericUpDown1.Enabled = true;
+            }
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.CloseAfter = numericUpDown1.Value;
+            Properties.Settings.Default.Save();
+        }
         #endregion
 
         #region Update checks from github
@@ -319,7 +341,7 @@ namespace LandingRateMonitor
         {
             if (e.Error != null)
             {
-              //  MessageBox.Show(e.Error.Message);
+                //  MessageBox.Show(e.Error.Message);
                 //error handler, tbd
             }
             else
@@ -330,6 +352,42 @@ namespace LandingRateMonitor
                     linkLabelUpdate.Visible = true;
                     updateUri = (e.Result as Release).HtmlUrl;
                 }
+            }
+        }
+        #endregion
+
+        #region Logging and data handling
+        void MakeLogIfEmpty()
+        {
+            const string header = "Time,Plane,FPM,Impact (G),Air Speed (kt),Ground Speed (kt),Headwind (kt),Crosswind (kt),Sideslip (deg)";
+            string myDocs = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            Directory.CreateDirectory(myDocs + @"\MyMSFS2020Landings-Gees"); //create if doesn't exist
+            string path = myDocs + @"\MyMSFS2020Landings-Gees\Landings.v1.csv";
+            if (!File.Exists(path))
+            {
+                using (StreamWriter w = File.CreateText(path))
+                {
+                    w.WriteLine(header);
+                }
+            }
+        }
+        void EnterLog(string Plane, int FPM, double G, double airV, double groundV, double headW, double crossW, double sideslip)
+        {
+            MakeLogIfEmpty();
+            string myDocs = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string path = myDocs + @"\MyMSFS2020Landings-Gees\Landings.v1.csv";
+            using (StreamWriter w = File.AppendText(path))
+            {
+                string logLine = DateTime.Now.ToString("G") + ",";
+                logLine += Plane + ",";
+                logLine += FPM + ",";
+                logLine += G.ToString("0.##") + ",";
+                logLine += airV.ToString("0.##") + ",";
+                logLine += groundV.ToString("0.##") + ",";
+                logLine += headW.ToString("0.##") + ",";
+                logLine += crossW.ToString("0.##") + ",";
+                logLine += sideslip.ToString("0.##");
+                w.WriteLine(logLine);
             }
         }
         #endregion

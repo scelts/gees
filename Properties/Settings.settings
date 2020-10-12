@@ -1,9 +1,24 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="LandingRateMonitor.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Gees.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="MyVersion" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="AutoClose" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CloseAfter" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="LandingsLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 19</Value>
+    </Setting>
+    <Setting Name="LandingsSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">1564, 594</Value>
+    </Setting>
+    <Setting Name="LandingsMaximised" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

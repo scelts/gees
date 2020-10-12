@@ -7,7 +7,7 @@ using System.Threading;
 using System.Windows.Documents;
 using System.Windows.Forms;
 
-namespace LandingRateMonitor
+namespace Gees
 {
     static class Program
     {
