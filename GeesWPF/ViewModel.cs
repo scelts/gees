@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
+using System.IO;
 using System.IO.Packaging;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -135,6 +136,7 @@ namespace GeesWPF
        }
        private void BindData(string filePath)
         {
+            MakeLogIfEmpty();
             logTable.Columns.Clear();
             logTable.Rows.Clear();
             string[] lines = System.IO.File.ReadAllLines(filePath);
@@ -163,6 +165,21 @@ namespace GeesWPF
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("LandingTable"));
         }
         #endregion
+
+        void MakeLogIfEmpty()
+        {
+            const string header = "Time,Plane,FPM,Impact (G),Air Speed (kt),Ground Speed (kt),Headwind (kt),Crosswind (kt),Sideslip (deg)";
+            string myDocs = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            Directory.CreateDirectory(myDocs + @"\MyMSFS2020Landings-Gees"); //create if doesn't exist
+            string path = myDocs + @"\MyMSFS2020Landings-Gees\Landings.v1.csv";
+            if (!File.Exists(path))
+            {
+                using (StreamWriter w = File.CreateText(path))
+                {
+                    w.WriteLine(header);
+                }
+            }
+        }
 
         #region Landing Rate Data
         public class Parameters
