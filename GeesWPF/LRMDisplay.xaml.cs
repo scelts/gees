@@ -50,5 +50,13 @@ namespace GeesWPF
         {
             this.BeginStoryboard(FindResource("hide") as Storyboard);
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            if (Width < 350)
+            {
+                SlideLeft();
+            }
+        }
     }
 }
