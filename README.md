@@ -9,21 +9,25 @@
   In game landing analysis for Microsoft Flight Simulator 2020.
 </p>
 
+## Update
+**The whole app was rewritten from windows forms to WPF**. I guess this would be easier to maintain.
+
+For changelogs, please check the [releases](https://github.com/scelts/msfslandingrate/releases).
 
 ## How to Install/Use?
 Download the latest release from [here](https://github.com/scelts/msfslandingrate/releases) (Assets -> File-that-is-not-source-code.zip). Unzip to your favourite location for MSFS2020 landing monitors, and start ```Gees.exe```. 
 You'll see a window like this in the bottom right. 
 
-![Screenshot](https://github.com/scelts/msfslandingrate/blob/master/img/app_screenshot.png "App screenshot")
+![Screenshot](img/app_screenshot.png "App screenshot")
 
-The app itself runs in the background, and you can find this status window in the status trey, as this icon:
+The app itself runs in the background, and you can find this status window in the status tray, as this icon:
 
-![Trey Icon](https://github.com/scelts/msfslandingrate/blob/master/img/tray_icon.png "Trey icon")
+![Trey Icon](img/tray_icon.png "Trey icon")
 
 That's it. When you start the sim the app will automatically connect and when you land, you'll get a window similar to this slide out top-left:
 
-![Slider](https://github.com/scelts/msfslandingrate/blob/master/img/slider.png "Slider")
-![MSFS view](https://github.com/scelts/msfslandingrate/blob/master/img/ingame.png "MSFS view")
+![Slider](img/slider.png "Slider")
+![MSFS view](img/ingame.png "MSFS view")
 
 You can start it before, or after the MSFS, it doesn't matter.
 
@@ -36,7 +40,7 @@ This is calculated by queriing the aircraft distance from the ground over time, 
 
 > You cannot query only the vertical rate. This was possible in FSX where you have "flat" runways, but if the runway is sloping, this doesn't work. 
 ### G force at the touchdown
-Average G force at which the airplane is subjected 100ms after landing. Should be in theory related to the descent rate, undergarriage dampers and how much the passengers are nervous.
+Average G force at which the airplane is subjected 50ms after landing. Should be in theory related to the descent rate, undergarriage dampers and how much the passengers are nervous.
 ### Airspeed and ground speed at the touchdown
 Self explanatory.
 ### Wind speed and direction at the touchdown
@@ -45,10 +49,9 @@ There's a nice arrow, showing where the wind is blowing from
 Did you do the proper de-crab manouver, or the plane is going sideways on touchdown in the crosswind? The higher, the worse. Keep it close to 0 degrees or you might break the gear, or pop the tire (well, probably not in the sim).
 
 ## How to compile it
-It's a c# application (winforms...). You'll need a Visual Studio with .NET 4.7 and the following nuget libraries:
+It's a c# WPF application. You'll need a Visual Studio with .NET 4.7 and the following nuget libraries:
 ```
 CTrue.FsConnect
-FontAwesome.Sharp
 Octokit
 PrettyBin
 ```

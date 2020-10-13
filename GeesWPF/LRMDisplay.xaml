@@ -1,0 +1,69 @@
+﻿<Window x:Class="GeesWPF.LRMDisplay"
+        x:Name="LRMDisplaywin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GeesWPF"
+        mc:Ignorable="d"
+        Title="LRMDisplay" Height="220" Width="350" Topmost="True" WindowStyle="None" Background="#FF1D3557" ResizeMode="NoResize" Left="-350" Top="40" ShowInTaskbar="False">
+    <Window.Resources>
+        <Storyboard x:Key="show" TargetProperty="Margin">
+            <DoubleAnimation Duration="0:0:0.3" Storyboard.TargetProperty="Left" From="-350" To="0" AccelerationRatio=".5">
+                <DoubleAnimation.EasingFunction>
+                    <CircleEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Key="hide" TargetProperty="Margin">
+            <DoubleAnimation Duration="0:0:0.3" Storyboard.TargetProperty="Left" From="0" To="-350" AccelerationRatio=".5">
+                <DoubleAnimation.EasingFunction>
+                    <CircleEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+    </Window.Resources>
+    <Grid>
+        <Label x:Name="labelFPM" Content="{Binding FPMText}" HorizontalAlignment="Left" Margin="68,18,0,0" VerticalAlignment="Top" Foreground="#FFF1FAEE" FontSize="18"/>
+        <Label x:Name="labelG" Content="{Binding GeesText}" HorizontalAlignment="Left" Margin="68,55,0,0" VerticalAlignment="Top" Foreground="#FFF1FAEE" FontSize="18"/>
+        <Label x:Name="labelSpeeds" Content="{Binding SpeedsText}" HorizontalAlignment="Left" Margin="68,92,0,0" VerticalAlignment="Top" Foreground="#FFF1FAEE" FontSize="18"/>
+        <Label x:Name="labelWind" Content="{Binding WindSpeedText}" HorizontalAlignment="Left" Margin="68,129,0,0" VerticalAlignment="Top" Foreground="#FFF1FAEE" FontSize="18"/>
+        <Label x:Name="labelDeg" Content="{Binding AlphaText}" HorizontalAlignment="Left" Margin="68,166,0,0" VerticalAlignment="Top" Foreground="#FFF1FAEE" FontSize="18"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="32" Margin="31,20,0,0" VerticalAlignment="Top" Width="32" Source="Images/icon.png"/>
+        <Image x:Name="image_Copy" HorizontalAlignment="Left" Height="32" Margin="31,57,0,0" VerticalAlignment="Top" Width="32" RenderTransformOrigin="0.5,0.5" Source="{Binding GeesImage}">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.9" ScaleY="0.9"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="image_Copy1" HorizontalAlignment="Left" Height="32" Margin="31,94,0,0" VerticalAlignment="Top" Width="32" Source="Images/tachometer.png" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.9" ScaleY="0.9"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="image_Wind" HorizontalAlignment="Left" Height="32" Margin="31,131,0,0" VerticalAlignment="Top" Width="32" Source="Images/upw.png" RenderTransformOrigin="0.5,0.5" Stretch="Fill" StretchDirection="UpOnly" IsEnabled="False">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="{Binding WindDirection}"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="image_Copy3" HorizontalAlignment="Left" Height="32" Margin="31,168,0,0" VerticalAlignment="Top" Width="32" Source="Images/slidew.png" RenderTransformOrigin="0.5,0.5"/>
+        <Image x:Name="image1" HorizontalAlignment="Left" Height="220" Margin="311,0,-0.6,0" VerticalAlignment="Top" Width="40" Source="Images/chevron.png" Stretch="None" Cursor="Hand" MouseDown="image1_MouseDown"/>
+
+    </Grid>
+
+</Window>
+

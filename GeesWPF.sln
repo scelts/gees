@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeesWPF", "GeesWPF\GeesWPF.csproj", "{774BD49C-588E-4D99-B1A6-0AA342B63166}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{774BD49C-588E-4D99-B1A6-0AA342B63166}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{774BD49C-588E-4D99-B1A6-0AA342B63166}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{774BD49C-588E-4D99-B1A6-0AA342B63166}.Debug|x64.ActiveCfg = Debug|x64
+		{774BD49C-588E-4D99-B1A6-0AA342B63166}.Debug|x64.Build.0 = Debug|x64
+		{774BD49C-588E-4D99-B1A6-0AA342B63166}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{774BD49C-588E-4D99-B1A6-0AA342B63166}.Release|Any CPU.Build.0 = Release|Any CPU
+		{774BD49C-588E-4D99-B1A6-0AA342B63166}.Release|x64.ActiveCfg = Release|x64
+		{774BD49C-588E-4D99-B1A6-0AA342B63166}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {612590C0-567D-4695-84F7-59B983EF928B}
+	EndGlobalSection
+EndGlobal
