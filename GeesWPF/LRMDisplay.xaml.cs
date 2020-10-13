@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using System.Threading;
 using System.Windows.Threading;
+using System.Windows.Interop;
 
 namespace GeesWPF
 {
@@ -23,6 +24,27 @@ namespace GeesWPF
     /// </summary>
     public partial class LRMDisplay : Window
     {
+        #region Don't ever take focus
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+
+            //Set the window style to noactivate.
+            var helper = new WindowInteropHelper(this);
+            SetWindowLong(helper.Handle, GWL_EXSTYLE,
+                GetWindowLong(helper.Handle, GWL_EXSTYLE) | WS_EX_NOACTIVATE);
+        }
+
+        private const int GWL_EXSTYLE = -20;
+        private const int WS_EX_NOACTIVATE = 0x08000000;
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+
+        [DllImport("user32.dll")]
+        public static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+        #endregion
+
         DispatcherTimer timerClose = new DispatcherTimer();
         public LRMDisplay(ViewModel landingModel)
         {
