@@ -172,7 +172,7 @@ namespace GeesWPF
                     {
                         PlaneInfoResponse r = (PlaneInfoResponse)e.Data;
                         //ignore when noone is flying
-                        if (r.GroundSpeed == 0)
+                        if (r.ForwardSpeed < 4) //if less then 4kt, it's not a landing or out to menu
                         {
                             SafeToRead = true;
                             return;
@@ -225,7 +225,7 @@ namespace GeesWPF
                 Int32 FPM = Convert.ToInt32(-fpm);
 
                 double gees = 0;
-                int Gforcemeterlen = 100 / SAMPLE_RATE; // take 50ms average for G force
+                int Gforcemeterlen = 100 / SAMPLE_RATE; // take 100ms average for G force
                 for (int i = 0; i < Gforcemeterlen; i++)
                 {
                     gees += Onground.ElementAt(i).Gforce;

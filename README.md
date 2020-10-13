@@ -40,7 +40,7 @@ This is calculated by queriing the aircraft distance from the ground over time, 
 
 > You cannot query only the vertical rate. This was possible in FSX where you have "flat" runways, but if the runway is sloping, this doesn't work. 
 ### G force at the touchdown
-Average G force at which the airplane is subjected 50ms after landing. Should be in theory related to the descent rate, undergarriage dampers and how much the passengers are nervous.
+Average G force at which the airplane is subjected 100ms after landing. Should be in theory related to the descent rate, undergarriage dampers and how much the passengers are nervous.
 ### Airspeed and ground speed at the touchdown
 Self explanatory.
 ### Wind speed and direction at the touchdown
