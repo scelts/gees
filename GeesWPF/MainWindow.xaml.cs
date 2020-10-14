@@ -98,8 +98,6 @@ namespace GeesWPF
             }
             this.DataContext = viewModel;
             InitializeComponent();
-            //LOG
-            MakeLogIfEmpty();
             //SYSTEM TRAY
             notifyIcon.Icon = Properties.Resources.icon;
             notifyIcon.Visible = true;
@@ -234,16 +232,18 @@ namespace GeesWPF
                 gees /= Gforcemeterlen;
 
                 double incAngle = Math.Atan(Inair.Last().LateralSpeed / Inair.Last().ForwardSpeed) * 180 / Math.PI;
-                EnterLog(Inair.First().Type, FPM, gees, Inair.Last().AirspeedInd, Inair.Last().GroundSpeed, Inair.Last().WindHead, Inair.Last().WindLat, incAngle);
+                
+               // EnterLog(Inair.First().Type, FPM, gees, Inair.Last().AirspeedInd, Inair.Last().GroundSpeed, Inair.Last().WindHead, Inair.Last().WindLat, incAngle);
                 viewModel.LastLandingParameters = new ViewModel.Parameters
                 {
+                    Name = Inair.First().Type,
                     FPM = FPM,
-                    Gees = gees,
-                    Airspeed = Inair.Last().AirspeedInd,
-                    Groundspeed = Inair.Last().GroundSpeed,
-                    Crosswind = Inair.Last().WindLat,
-                    Headwind = Inair.Last().WindHead,
-                    Slip = incAngle
+                    Gees = Math.Round(gees, 2),
+                    Airspeed = Math.Round(Inair.Last().AirspeedInd, 2),
+                    Groundspeed = Math.Round(Inair.Last().GroundSpeed, 2),
+                    Crosswind = Math.Round(Inair.Last().WindLat, 2),
+                    Headwind = Math.Round(Inair.Last().WindHead, 2),
+                    Slip = Math.Round(incAngle, 2)
                 };
                 winLRM.SlideLeft();
                // viewModel.UpdateTable();
@@ -359,8 +359,9 @@ namespace GeesWPF
         #endregion
 
         #region Logging and data handling
-        void MakeLogIfEmpty()
+    /*    void MakeLogIfEmpty()
         {
+            string ls = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator;
             const string header = "Time,Plane,FPM,Impact (G),Air Speed (kt),Ground Speed (kt),Headwind (kt),Crosswind (kt),Sideslip (deg)";
             string myDocs = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             Directory.CreateDirectory(myDocs + @"\MyMSFS2020Landings-Gees"); //create if doesn't exist
@@ -375,6 +376,7 @@ namespace GeesWPF
         }
         void EnterLog(string Plane, int FPM, double G, double airV, double groundV, double headW, double crossW, double sideslip)
         {
+
             MakeLogIfEmpty();
             string myDocs = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string path = myDocs + @"\MyMSFS2020Landings-Gees\Landings.v1.csv";
@@ -391,7 +393,7 @@ namespace GeesWPF
                 logLine += sideslip.ToString("0.##");
                 w.WriteLine(logLine);
             }
-        }
+        }*/
         #endregion
 
         #region System Tray handling

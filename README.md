@@ -54,6 +54,7 @@ It's a c# WPF application. You'll need a Visual Studio with .NET 4.7 and the fol
 CTrue.FsConnect
 Octokit
 PrettyBin
+CsvHelper
 ```
 ## Contact
 Use the [reddit page](https://www.reddit.com/r/MSFS2020LandingRate), or here, the [Issues page](https://github.com/scelts/msfslandingrate/issues) to report bugs and suggestions. Please do.

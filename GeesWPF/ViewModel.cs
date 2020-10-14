@@ -131,10 +131,14 @@ namespace GeesWPF
 
         public void UpdateTable()
         {
-            string path = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            BindData(path + @"\MyMSFS2020Landings-Gees\Landings.v1.csv");
-       }
-       private void BindData(string filePath)
+            LandingLogger logger = new LandingLogger();
+            logTable = logger.LandingLog;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("LandingTable"));
+
+            /*string path = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            BindData(path + @"\MyMSFS2020Landings-Gees\Landings.v1.csv");*/
+        }
+   /*     private void BindData(string filePath)
         {
             MakeLogIfEmpty();
             logTable.Columns.Clear();
@@ -163,27 +167,13 @@ namespace GeesWPF
                 }
             }
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("LandingTable"));
-        }
+        }*/
         #endregion
-
-        void MakeLogIfEmpty()
-        {
-            const string header = "Time,Plane,FPM,Impact (G),Air Speed (kt),Ground Speed (kt),Headwind (kt),Crosswind (kt),Sideslip (deg)";
-            string myDocs = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            Directory.CreateDirectory(myDocs + @"\MyMSFS2020Landings-Gees"); //create if doesn't exist
-            string path = myDocs + @"\MyMSFS2020Landings-Gees\Landings.v1.csv";
-            if (!File.Exists(path))
-            {
-                using (StreamWriter w = File.CreateText(path))
-                {
-                    w.WriteLine(header);
-                }
-            }
-        }
 
         #region Landing Rate Data
         public class Parameters
         {
+            public string Name { get; set; }
             public int FPM { get; set; }
             public double Gees { get; set; }
             public double Airspeed { get; set; }
@@ -195,6 +185,7 @@ namespace GeesWPF
 
         private Parameters _lastLandingParams = new Parameters
         {
+            Name = null,
             FPM = -125,
             Gees = 1.22,
             Airspeed = 65,
@@ -209,6 +200,19 @@ namespace GeesWPF
             set
             {
                 _lastLandingParams = value;
+                LandingLogger logger = new LandingLogger();
+                logger.EnterLog(new LandingLogger.LogEntry
+                {
+                    Time = DateTime.Now,
+                    Plane = value.Name,
+                    Fpm = value.FPM,
+                    G = value.Gees,
+                    AirV = value.Airspeed,
+                    GroundV = value.Groundspeed,
+                    HeadV = value.Headwind,
+                    CrossV = value.Crosswind,
+                    Sideslip = value.Slip
+                });
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(""));
             }
         }
