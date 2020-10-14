@@ -84,6 +84,8 @@ namespace GeesWPF
                          dt.Load(dr);
                     }
                 }
+                dt.DefaultView.Sort = "Time desc";
+                dt = dt.DefaultView.ToTable();
                 return dt;
             }
         }
