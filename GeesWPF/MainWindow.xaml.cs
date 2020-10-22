@@ -47,7 +47,7 @@ namespace GeesWPF
         public double LateralSpeed;
         public double ForwardSpeed;
         public double Gforce;
-        public double Radio;
+        public double LandingRate;
     }
 
     /// <summary>
@@ -129,7 +129,7 @@ namespace GeesWPF
             definition.Add(new SimProperty("VELOCITY BODY X", "Feet per second", SIMCONNECT_DATATYPE.FLOAT64));
             definition.Add(new SimProperty("VELOCITY BODY Z", "Feet per second", SIMCONNECT_DATATYPE.FLOAT64));
             definition.Add(new SimProperty("G FORCE", "GForce", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty("PLANE ALT ABOVE GROUND", "Feet", SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty("PLANE TOUCHDOWN NORMAL VELOCITY", "Feet per second", SIMCONNECT_DATATYPE.FLOAT64));
             //SHOW LRM
             winLRM = new LRMDisplay(viewModel);
             winLRM.Show();
@@ -219,7 +219,7 @@ namespace GeesWPF
             try
             {
                 double sample_time = Convert.ToDouble(SAMPLE_RATE) * 0.001; //ms
-                double fpm = 60 * (Inair.ElementAt(BUFFER_SIZE / 2).Radio - Onground.ElementAt(BUFFER_SIZE / 2).Radio) / (sample_time * Convert.ToDouble(BUFFER_SIZE));
+                double fpm = 60 * Onground.ElementAt(0).LandingRate;
                 Int32 FPM = Convert.ToInt32(-fpm);
 
                 double gees = 0;
