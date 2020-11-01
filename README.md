@@ -10,7 +10,7 @@
 </p>
 
 ## Update
-**Finally, the app reads the landing rate from the sim itself. It should be the same as in landing challenges**. 
+**Bouncing after landing is now detected + G's a bit higher + Hide button + A bug fix**. 
 
 For changelogs, please check the [releases](https://github.com/scelts/msfslandingrate/releases).
 
@@ -36,15 +36,8 @@ Delete the folder where the Gees.exe resides.
 ## What is measured?
 ### Descent rate at the landing in feet per minute
 Self explanatory.
-
-~~This is calculated by queriing the aircraft distance from the ground over time, every 20ms. After touchdown is detected, one takes the average descent rate in the last 100ms of flight.~~
-> ~~The landing rate might differ a bit from the one in landing challenges. This is because I have no idea how Asobo calculates it, and I cannot query this value. Should be the same ballpark figure, it's anyway arbitrary how you do it.~~
-
-> ~~You cannot query only the vertical rate. This was possible in FSX where you have "flat" runways, but if the runway is sloping, this doesn't work.~~
-
-> You can query it, it was just well hidden. I mean, really well. Who knows what else is there.
 ### G force at the touchdown
-Average G force at which the airplane is subjected 100ms after landing. Should be in theory related to the descent rate, undercarriage dampers and how much the passengers are nervous.
+Maximum G force impact at the moment of touchdown. Should be in theory related to the descent rate, undercarriage dampers and how much the passengers are nervous.
 ### Airspeed and ground speed at the touchdown
 Self explanatory.
 ### Wind speed and direction at the touchdown
