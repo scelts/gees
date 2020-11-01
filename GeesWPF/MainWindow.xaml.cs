@@ -67,13 +67,13 @@ namespace GeesWPF
         static public string version;
         int lastDeactivateTick;
         bool lastDeactivateValid;
+        int bounces = 0;
 
         const int SAMPLE_RATE = 20; //ms
-        const int WAIT_AFTER_LANDING = 100;
-        const int BUFFER_SIZE = 10;
+        const int BUFFER_SIZE = 2;
 
         DispatcherTimer timerRead = new DispatcherTimer();
-        DispatcherTimer timerWait = new DispatcherTimer();
+        DispatcherTimer timerBounce = new DispatcherTimer();
         DispatcherTimer timerConnection = new DispatcherTimer();
         BackgroundWorker backgroundConnector = new BackgroundWorker();
         BackgroundWorker backgroundWorkerUpdate = new BackgroundWorker();
@@ -117,8 +117,7 @@ namespace GeesWPF
             //SIMCONREADER
             timerRead.Interval = new TimeSpan(0, 0, 0, 0, SAMPLE_RATE);
             timerRead.Tick += timerRead_Tick;
-            timerWait.Interval = new TimeSpan(0, 0, 0, 0, WAIT_AFTER_LANDING);
-            timerWait.Tick += timerWait_Tick;
+            timerBounce.Tick += timerBounce_Tick;
             fsConnect.FsDataReceived += HandleReceivedFsData;
             definition.Add(new SimProperty("TITLE", null, SIMCONNECT_DATATYPE.STRING256));
             definition.Add(new SimProperty("SIM ON GROUND", "Bool", SIMCONNECT_DATATYPE.INT32));
@@ -150,7 +149,10 @@ namespace GeesWPF
             }
             else
             {
-                timerWait.Start();
+                calculateLanding();
+                int BOUNCE_TIMER = Properties.Settings.Default.CloseAfterLanding * 1000;
+                timerBounce.Interval = new TimeSpan(0, 0, 0, 0, BOUNCE_TIMER);
+                timerBounce.Start();
             }
         }
 
@@ -213,47 +215,59 @@ namespace GeesWPF
             SafeToRead = true;
         }
 
-        private void timerWait_Tick(object sender, EventArgs e)
+        private void calculateLanding()
         {
             //impact calculation
             try
             {
-                double sample_time = Convert.ToDouble(SAMPLE_RATE) * 0.001; //ms
                 double fpm = 60 * Onground.ElementAt(0).LandingRate;
                 Int32 FPM = Convert.ToInt32(-fpm);
 
                 double gees = 0;
-                int Gforcemeterlen = 100 / SAMPLE_RATE; // take 100ms average for G force
-                for (int i = 0; i < Gforcemeterlen; i++)
+                //int Gforcemeterlen = 100 / SAMPLE_RATE; // take 100ms average for G force
+                for (int i = 0; i < BUFFER_SIZE; i++)
                 {
-                    gees += Onground.ElementAt(i).Gforce;
-                    Console.WriteLine(Onground.ElementAt(i).Gforce);
+                    if (Onground.ElementAt(i).Gforce > gees)
+                    {
+                        gees = Onground.ElementAt(i).Gforce;
+                    }
+                    /*gees += Onground.ElementAt(i).Gforce;
+                    Console.WriteLine(Onground.ElementAt(i).Gforce);*/
                 }
-                gees /= Gforcemeterlen;
+               // gees /= BUFFER_SIZE;*/
+              //  gees += Onground.ElementAt(0).Gforce;
+
 
                 double incAngle = Math.Atan(Inair.Last().LateralSpeed / Inair.Last().ForwardSpeed) * 180 / Math.PI;
-                
-               // EnterLog(Inair.First().Type, FPM, gees, Inair.Last().AirspeedInd, Inair.Last().GroundSpeed, Inair.Last().WindHead, Inair.Last().WindLat, incAngle);
-                viewModel.LastLandingParameters = new ViewModel.Parameters
+
+                if (bounces == 0)
                 {
-                    Name = Inair.First().Type,
-                    FPM = FPM,
-                    Gees = Math.Round(gees, 2),
-                    Airspeed = Math.Round(Inair.Last().AirspeedInd, 2),
-                    Groundspeed = Math.Round(Inair.Last().GroundSpeed, 2),
-                    Crosswind = Math.Round(Inair.Last().WindLat, 2),
-                    Headwind = Math.Round(Inair.Last().WindHead, 2),
-                    Slip = Math.Round(incAngle, 2)
-                };
-                winLRM.SlideLeft();
-               // viewModel.UpdateTable();
+                    // EnterLog(Inair.First().Type, FPM, gees, Inair.Last().AirspeedInd, Inair.Last().GroundSpeed, Inair.Last().WindHead, Inair.Last().WindLat, incAngle);
+                    viewModel.SetParams(new ViewModel.Parameters
+                    {
+                        Name = Inair.First().Type,
+                        FPM = FPM,
+                        Gees = Math.Round(gees, 2),
+                        Airspeed = Math.Round(Inair.Last().AirspeedInd, 2),
+                        Groundspeed = Math.Round(Inair.Last().GroundSpeed, 2),
+                        Crosswind = Math.Round(Inair.Last().WindLat, 2),
+                        Headwind = Math.Round(Inair.Last().WindHead, 2),
+                        Slip = Math.Round(incAngle, 2),
+                        Bounces = 0
+                    });
+                    winLRM.SlideLeft();
+                    bounces++;
+                }
+                else
+                {
+                    viewModel.BounceParams();
+                }
+                // viewModel.UpdateTable();
                 //LRMDisplay form = new LRMDisplay(FPM, gees, Inair.Last().AirspeedInd, Inair.Last().GroundSpeed, Inair.Last().WindHead, Inair.Last().WindLat, incAngle);
                 //form.Show();
-                timerWait.Stop();
                 Inair.Clear();
                 Onground.Clear();
                 ShowLanding = false;
-                viewModel.UpdateTable();
             }
             catch (Exception ex)
             {
@@ -261,6 +275,13 @@ namespace GeesWPF
                 //some params are missing. likely the user is in the main menu. ignore
             }
         }
+        private void timerBounce_Tick(object sender, EventArgs e)
+        {
+            bounces = 0;
+            viewModel.LogParams();
+            timerBounce.Stop();
+        }
+
         #endregion
 
         #region Sim Connection
@@ -303,6 +324,10 @@ namespace GeesWPF
             Properties.Settings.Default.Save();
             notifyIcon.Visible = false;
             Environment.Exit(1);
+        }
+        private void button_Hide_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
         }
         private void redditLink_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -425,8 +450,8 @@ namespace GeesWPF
             viewModel.Updatable = viewModel.Version != latest.TagName;
             updateUri = latest.HtmlUrl;
         }
-        #endregion
 
+        #endregion
 
     }
 }

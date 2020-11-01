@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GeesWPF"
         mc:Ignorable="d"
-        Title="LRMDisplay" Height="220" Width="2" Topmost="True" WindowStyle="None" Background="#FF1D3557" ResizeMode="NoResize" Left="-1" Top="40" ShowInTaskbar="False">
+        Title="LRMDisplay" Height="260" Width="1" Topmost="True" WindowStyle="None" Background="#FF1D3557" ResizeMode="NoResize" Left="-1" Top="40" ShowInTaskbar="False">
     <Window.Resources>
         <Storyboard x:Key="show" TargetProperty="Margin">
             <DoubleAnimation Duration="0:0:0.3" Storyboard.TargetProperty="Width" From="2" To="350" AccelerationRatio=".5">
@@ -61,8 +61,10 @@
             </Image.RenderTransform>
         </Image>
         <Image x:Name="image_Copy3" HorizontalAlignment="Left" Height="32" Margin="31,168,0,0" VerticalAlignment="Top" Width="32" Source="Images/slidew.png" RenderTransformOrigin="0.5,0.5"/>
-        <Image x:Name="image1" HorizontalAlignment="Left" Height="220" Margin="311,0,-0.6,0" VerticalAlignment="Top" Width="40" Source="Images/chevron.png" Stretch="None" Cursor="Hand" MouseDown="image1_MouseDown"/>
-        <Button x:Name="button" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="5" Height="220" Background="#FFE63946" BorderBrush="{x:Null}" Cursor="SizeWE" Click="button_Click"/>
+        <Image x:Name="image1" HorizontalAlignment="Left" Height="260" Margin="311,0,-0.6,0" Width="40" Source="Images/chevron.png" Cursor="Hand" MouseDown="image1_MouseDown" Stretch="None"/>
+        <Button x:Name="button" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="5" Height="260" Background="#FFA8DADC" BorderBrush="{x:Null}" Cursor="SizeWE" Click="button_Click"/>
+        <Label x:Name="labelBounces" Content="{Binding BouncesText}" HorizontalAlignment="Left" Margin="68,208,0,0" VerticalAlignment="Top" Foreground="#FFF1FAEE" FontSize="18"/>
+        <Image x:Name="image_Copy2" HorizontalAlignment="Left" Height="32" Margin="31,210,0,0" VerticalAlignment="Top" Width="32" Source="Images/bounce.png" RenderTransformOrigin="0.5,0.5"/>
 
     </Grid>
 

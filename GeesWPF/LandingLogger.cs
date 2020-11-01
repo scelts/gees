@@ -34,6 +34,8 @@ namespace GeesWPF
             public double CrossV { get; set; }
             [Name("Sideslip (deg)")]
             public double Sideslip { get; set; }
+            [Name("Bounces")]
+            public double Bounces { get; set; }
         }
 
         public string MakeLogIfEmpty()
@@ -41,7 +43,7 @@ namespace GeesWPF
             //const string header = "Time,Plane,FPM,Impact (G),Air Speed (kt),Ground Speed (kt),Headwind (kt),Crosswind (kt),Sideslip (deg)";
             string myDocs = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             Directory.CreateDirectory(myDocs + @"\MyMSFS2020Landings-Gees"); //create if doesn't exist
-            string path = myDocs + @"\MyMSFS2020Landings-Gees\Landings.v2.csv";
+            string path = myDocs + @"\MyMSFS2020Landings-Gees\Landings.v3.csv";
             if (!File.Exists(path))
             {
                 using (var writer = new StreamWriter(path))

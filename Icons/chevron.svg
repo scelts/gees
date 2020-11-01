@@ -8,8 +8,8 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="40"
-   height="220"
-   viewBox="0 0 10.583333 58.208335"
+   height="260"
+   viewBox="0 0 10.583333 68.791669"
    version="1.1"
    id="svg1491"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
@@ -42,7 +42,7 @@
     <inkscape:grid
        type="xygrid"
        id="grid2054"
-       empspacing="110" />
+       empspacing="130" />
   </sodipodi:namedview>
   <metadata
      id="metadata1488">
@@ -61,15 +61,15 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#e63946;stroke:none;stroke-width:0.665001;stroke-dasharray:1.995, 0.66500099999999995;stroke-opacity:1;fill-opacity:1"
+       style="fill:#e63946;fill-opacity:1;stroke:none;stroke-width:0.722932;stroke-dasharray:2.16879, 0.722932;stroke-opacity:1"
        id="rect2060"
        width="10.583333"
-       height="58.208332"
+       height="68.791664"
        x="0"
        y="0" />
     <path
        id="rect2069"
-       style="fill:#fffffd;fill-opacity:1;stroke:none;stroke-width:0.665001;stroke-dasharray:1.995, 0.66500099999999995;stroke-opacity:1"
-       d="m 8.1033812,23.117452 -5.9867145,5.986715 5.9867145,5.986715 z" />
+       style="fill:#fffffd;fill-opacity:1;stroke:none;stroke-width:0.665001;stroke-dasharray:1.995, 0.665001;stroke-opacity:1"
+       d="m 8.1033813,28.409118 -5.9867146,5.986715 5.9867146,5.986715 z" />
   </g>
 </svg>

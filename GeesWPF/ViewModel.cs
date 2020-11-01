@@ -134,40 +134,7 @@ namespace GeesWPF
             LandingLogger logger = new LandingLogger();
             logTable = logger.LandingLog;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("LandingTable"));
-
-            /*string path = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            BindData(path + @"\MyMSFS2020Landings-Gees\Landings.v1.csv");*/
         }
-   /*     private void BindData(string filePath)
-        {
-            MakeLogIfEmpty();
-            logTable.Columns.Clear();
-            logTable.Rows.Clear();
-            string[] lines = System.IO.File.ReadAllLines(filePath);
-            if (lines.Length > 0)
-            {
-                //first line to create header
-                string firstLine = lines[0];
-                string[] headerLabels = firstLine.Split(',');
-                foreach (string headerWord in headerLabels)
-                {
-                    logTable.Columns.Add(new DataColumn(headerWord));
-                }
-                //For Data
-                for (int i = lines.Length - 1; i > 0; i--)
-                {
-                    string[] dataWords = lines[i].Split(',');
-                    DataRow dr = logTable.NewRow();
-                    int columnIndex = 0;
-                    foreach (string headerWord in headerLabels)
-                    {
-                        dr[headerWord] = dataWords[columnIndex++];
-                    }
-                    logTable.Rows.Add(dr);
-                }
-            }
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("LandingTable"));
-        }*/
         #endregion
 
         #region Landing Rate Data
@@ -181,7 +148,9 @@ namespace GeesWPF
             public double Headwind { get; set; }
             public double Slip { get; set; }
             public double Crosswind { get; set; }
+            public int Bounces { get; set; }
         }
+
 
         private Parameters _lastLandingParams = new Parameters
         {
@@ -192,37 +161,47 @@ namespace GeesWPF
             Groundspeed = 63,
             Headwind = -7,
             Crosswind = 3,
-            Slip = 1.53
+            Slip = 1.53,
+            Bounces = 0
         };
-        public Parameters LastLandingParameters
+        public void SetParams (Parameters value)
         {
-            get { return LastLandingParameters; }
-            set
-            {
-                _lastLandingParams = value;
-                LandingLogger logger = new LandingLogger();
-                logger.EnterLog(new LandingLogger.LogEntry
-                {
-                    Time = DateTime.Now,
-                    Plane = value.Name,
-                    Fpm = value.FPM,
-                    G = value.Gees,
-                    AirV = value.Airspeed,
-                    GroundV = value.Groundspeed,
-                    HeadV = value.Headwind,
-                    CrossV = value.Crosswind,
-                    Sideslip = value.Slip
-                });
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(""));
-            }
+            _lastLandingParams = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(""));
         }
+
+        public void BounceParams()
+        {
+            _lastLandingParams.Bounces += 1;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(""));
+        }
+        public void LogParams()
+        {
+            LandingLogger logger = new LandingLogger();
+            logger.EnterLog(new LandingLogger.LogEntry
+            {
+                Time = DateTime.Now,
+                Plane = _lastLandingParams.Name,
+                Fpm = _lastLandingParams.FPM,
+                G = _lastLandingParams.Gees,
+                AirV = _lastLandingParams.Airspeed,
+                GroundV = _lastLandingParams.Groundspeed,
+                HeadV = _lastLandingParams.Headwind,
+                CrossV = _lastLandingParams.Crosswind,
+                Sideslip = _lastLandingParams.Slip,
+                Bounces = _lastLandingParams.Bounces
+            });
+            UpdateTable();
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(""));
+        }
+
         public string FPMText
         {
             get { return _lastLandingParams.FPM.ToString("0 fpm"); }
         }
         public string GeesText
         {
-            get { return _lastLandingParams.Gees.ToString("0.##G"); }
+            get { return _lastLandingParams.Gees.ToString("0.## G"); }
         }
         public string GeesImage
         {
@@ -274,6 +253,19 @@ namespace GeesWPF
         {
             get { return _lastLandingParams.Slip.ToString("0.##º Left Sideslip; 0.##º Right Sideslip;"); }
         }
+
+        public string BouncesText
+        {
+            get {
+                string unit = " bounces";
+                if (_lastLandingParams.Bounces == 1)
+                {
+                    unit = " bounce";
+                }
+                return _lastLandingParams.Bounces.ToString() + unit; 
+            }
+        }
+
         #endregion
 
         protected void OnPropertyChanged([CallerMemberName] String propertyName = "")

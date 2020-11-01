@@ -45,8 +45,8 @@
         <GroupBox x:Name="groupBox_Copy" Header="Slider Settings" HorizontalAlignment="Left" Height="80" Margin="10,230,0,0" VerticalAlignment="Top" Width="323" Foreground="#FFF1FAEE">
             <Grid HorizontalAlignment="Left" Height="40" Margin="10,10,-1.8,0" Width="290" VerticalAlignment="Top">
                 <Button x:Name="buttonTest" Content="Test" HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="32" Background="#FFA8DADC" Foreground="#FF1D3557" Click="buttonTest_Click" Margin="242,2,-3,0"/>
-                <CheckBox x:Name="checkBox" Content="Auto close after (seconds):" Margin="1,13,126,0" VerticalAlignment="Top" Foreground="#FFF1FAEE" IsChecked="{Binding AutoCloseLanding, Mode=TwoWay, Source={x:Static properties:Settings.Default}}" Checked="checkBox_Checked"/>
-                <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="19" Margin="169,11,0,0" TextWrapping="Wrap" Text="{Binding CloseAfterLanding, Mode=TwoWay, Source={x:Static properties:Settings.Default}}" VerticalAlignment="Top" Width="30" RenderTransformOrigin="-1.284,0.719" TextAlignment="Right" TextChanged="textBox_TextChanged" PreviewTextInput="textBox_PreviewTextInput"/>
+                <CheckBox x:Name="checkBox" Content="Auto close - Bounce timer (s):" Margin="1,13,106,0" VerticalAlignment="Top" Foreground="#FFF1FAEE" IsChecked="{Binding AutoCloseLanding, Mode=TwoWay, Source={x:Static properties:Settings.Default}}" Checked="checkBox_Checked"/>
+                <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="19" Margin="184,11,0,0" TextWrapping="Wrap" Text="{Binding CloseAfterLanding, Mode=TwoWay, Source={x:Static properties:Settings.Default}}" VerticalAlignment="Top" Width="30" RenderTransformOrigin="-1.284,0.719" TextAlignment="Right" TextChanged="textBox_TextChanged" PreviewTextInput="textBox_PreviewTextInput"/>
             </Grid>
         </GroupBox>
         <GroupBox x:Name="groupBox_Copy1" Header="Landings" HorizontalAlignment="Left" Height="80" Margin="10,315,0,0" VerticalAlignment="Top" Width="323" Foreground="#FFF1FAEE">
@@ -61,5 +61,6 @@
                 <Button x:Name="buttonUpdate" Content="Updates Available" HorizontalAlignment="Left" Margin="185,0,0,0" VerticalAlignment="Top" Width="105" Foreground="#FFF1FAEE" Height="37" Click="buttonUpdate_Click" Visibility="{Binding Updatable, Converter={StaticResource BoolToVis}}" Style="{DynamicResource DarkButton}"/>
             </Grid>
         </GroupBox>
+        <Button x:Name="button_Hide" Content="Hide" HorizontalAlignment="Left" Margin="178,13,0,0" VerticalAlignment="Top" Width="75" Foreground="#FF1D3557" Height="37" Style="{DynamicResource DarkButton}" Background="#FFA8DADC" Click="button_Hide_Click"/>
     </Grid>
 </Window>
