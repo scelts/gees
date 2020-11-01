@@ -44,7 +44,8 @@ Self explanatory.
 There's a nice arrow, showing where the wind is blowing from
 ### Sideslip at the touchdown
 Did you do the proper de-crab maneuver, or the plane is going sideways on touchdown in the crosswind? The higher, the worse. Keep it close to 0 degrees or you might break the gear, or pop the tire (well, probably not in the sim).
-
+### Bounces
+In cases where you want to land, but the plane says "nope, I'm still flying", all the measures are taken from the first touchdown, and all subsequent ones are counted as bounces.
 ## How to compile it
 It's a c# WPF application. You'll need a Visual Studio with .NET 4.7 and the following nuget libraries:
 ```
