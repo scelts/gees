@@ -34,7 +34,37 @@ namespace GeesWPF.Properties {
                 this["AutoCloseLanding"] = value;
             }
         }
-        
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool StartMinimized
+        {
+            get
+            {
+                return ((bool)(this["StartMinimized"]));
+            }
+            set
+            {
+                this["StartMinimized"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CloseWithSim
+        {
+            get
+            {
+                return ((bool)(this["CloseWithSim"]));
+            }
+            set
+            {
+                this["CloseWithSim"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]

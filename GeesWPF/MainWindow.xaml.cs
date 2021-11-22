@@ -134,6 +134,13 @@ namespace GeesWPF
             winLRM.Show();
         }
 
+        private void GracefulExit()
+        {
+            Properties.Settings.Default.Save();
+            notifyIcon.Visible = false;
+            Environment.Exit(1);
+        }
+
         #region Reading and processing simconnect data
         private void timerRead_Tick(object sender, EventArgs e)
         {
@@ -285,6 +292,7 @@ namespace GeesWPF
         #endregion
 
         #region Sim Connection
+        private bool simConnectedToggle = false;
         private void timerConnection_Tick(object sender, EventArgs e)
         {
             if (!backgroundConnector.IsBusy)
@@ -295,11 +303,17 @@ namespace GeesWPF
                 timerRead.Start();
                 notifyIcon.Icon = Properties.Resources.online;
                 viewModel.Connected = true;
+                simConnectedToggle = true;
             }
             else
             {
                 notifyIcon.Icon = Properties.Resources.offline;
                 viewModel.Connected = false;
+
+                if(simConnectedToggle && Properties.Settings.Default.CloseWithSim)
+                {
+                    GracefulExit();
+                }
             }
         }
 
@@ -320,10 +334,8 @@ namespace GeesWPF
         #region Handlers for UI
         private void button_Click(object sender, RoutedEventArgs e)
         {
-           // notifyIcon.Visible = false;
-            Properties.Settings.Default.Save();
-            notifyIcon.Visible = false;
-            Environment.Exit(1);
+            // notifyIcon.Visible = false;
+            GracefulExit();
         }
         private void button_Hide_Click(object sender, RoutedEventArgs e)
         {
@@ -433,6 +445,13 @@ namespace GeesWPF
             lastDeactivateTick = Environment.TickCount;
             lastDeactivateValid = true;
             this.Hide();
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (Properties.Settings.Default.StartMinimized)
+            {
+                this.Hide();
+            }
         }
         private void Window_Closing(object sender, CancelEventArgs e)
         {
