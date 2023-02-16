@@ -88,7 +88,18 @@ namespace GeesWPF
                 }
                 dt.DefaultView.Sort = "Time desc";
                 dt = dt.DefaultView.ToTable();
-                return dt;
+
+                DataTable clone = dt.Clone();
+                clone.Columns[0].DataType = System.Type.GetType("System.DateTime");
+                for (int i = 2; i < clone.Columns.Count; i++)
+                {
+                    clone.Columns[i].DataType = typeof(double);
+                }
+                foreach (DataRow row in dt.Rows)
+                {
+                    clone.ImportRow(row);
+                }
+                return clone;
             }
         }
     }
