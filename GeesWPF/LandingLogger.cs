@@ -75,20 +75,39 @@ namespace GeesWPF
         {
             get
             {
-                var dt = new DataTable();
+                List<LogEntry> records;
                 string path = MakeLogIfEmpty();
+                // Read the CSV file into a list of LogEntry objects
                 using (var reader = new StreamReader(path))
                 using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                 {
-                    // Do any configuration to `CsvReader` before creating CsvDataReader.
-                    using (var dr = new CsvDataReader(csv))
-                    {
-                         dt.Load(dr);
-                    }
+                    records = csv.GetRecords<LogEntry>().ToList();
                 }
-                dt.DefaultView.Sort = "Time desc";
-                dt = dt.DefaultView.ToTable();
-                return dt;
+
+                // Convert the list of LogEntry objects to a DataTable
+                var dt = new DataTable();
+
+                // Add columns to DataTable based on LogEntry properties
+                dt.Columns.Add("Time", typeof(DateTime));
+                dt.Columns.Add("Plane", typeof(string));
+                dt.Columns.Add("FPM", typeof(int));
+                dt.Columns.Add("Impact (G)", typeof(double));
+                dt.Columns.Add("Air Speed (kt)", typeof(double));
+                dt.Columns.Add("Ground Speed (kt)", typeof(double));
+                dt.Columns.Add("Headwind (kt)", typeof(double));
+                dt.Columns.Add("Crosswind (kt)", typeof(double));
+                dt.Columns.Add("Sideslip (deg)", typeof(double));
+                dt.Columns.Add("Bounces", typeof(double));
+
+                // Populate the DataTable with values from the list
+                foreach (var record in records)
+                {
+                    dt.Rows.Add(record.Time, record.Plane, record.Fpm, record.G, record.AirV, record.GroundV, record.HeadV, record.CrossV, record.Sideslip, record.Bounces);
+                }
+
+                // Sort the DataTable by Time in descending order
+                dt.DefaultView.Sort = "Time DESC";
+                return dt.DefaultView.ToTable();
             }
         }
     }
