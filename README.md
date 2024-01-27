@@ -10,9 +10,13 @@
 </p>
 
 ## Update
-**Bouncing after landing is now detected + G's a bit higher + Hide button + A bug fix**. 
+Check out the new in-game panel – it's more convenient and comes with some cool updates.
 
-For changelogs, please check the [releases](https://github.com/scelts/msfslandingrate/releases).
+https://flightsim.to/product/gees-landing-analysis-for-msfs
+
+or
+
+https://secure.simmarket.com/gees-gees-msfs.phtml
 
 ## How to Install/Use?
 Download the latest release from [here](https://github.com/scelts/msfslandingrate/releases) (Assets -> File-that-is-not-source-code.zip). Unzip to your favorite location for MSFS2020 landing monitors, and start ```Gees.exe```. 

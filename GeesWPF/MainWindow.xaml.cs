@@ -23,6 +23,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 
 
@@ -62,12 +63,13 @@ namespace GeesWPF
         static List<PlaneInfoResponse> Inair = new List<PlaneInfoResponse>();
         static List<PlaneInfoResponse> Onground = new List<PlaneInfoResponse>();
         static FsConnect fsConnect = new FsConnect();
-        static List<SimProperty> definition = new List<SimProperty>();
+        static List<SimVar> definition = new List<SimVar>();
         static string updateUri;
         static public string version;
         int lastDeactivateTick;
         bool lastDeactivateValid;
         int bounces = 0;
+        int myDefineId;
 
         const int SAMPLE_RATE = 20; //ms
         const int BUFFER_SIZE = 2;
@@ -119,19 +121,21 @@ namespace GeesWPF
             timerRead.Tick += timerRead_Tick;
             timerBounce.Tick += timerBounce_Tick;
             fsConnect.FsDataReceived += HandleReceivedFsData;
-            definition.Add(new SimProperty("TITLE", null, SIMCONNECT_DATATYPE.STRING256));
-            definition.Add(new SimProperty("SIM ON GROUND", "Bool", SIMCONNECT_DATATYPE.INT32));
-            definition.Add(new SimProperty("AIRCRAFT WIND X", "Knots", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty("AIRCRAFT WIND Z", "Knots", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty("AIRSPEED INDICATED", "Knots", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty("GROUND VELOCITY", "Knots", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty("VELOCITY BODY X", "Feet per second", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty("VELOCITY BODY Z", "Feet per second", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty("G FORCE", "GForce", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty("PLANE TOUCHDOWN NORMAL VELOCITY", "Feet per second", SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimVar("TITLE", null, SIMCONNECT_DATATYPE.STRING256));
+            definition.Add(new SimVar("SIM ON GROUND", "Bool", SIMCONNECT_DATATYPE.INT32));
+            definition.Add(new SimVar("AIRCRAFT WIND X", "Knots", SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimVar("AIRCRAFT WIND Z", "Knots", SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimVar("AIRSPEED INDICATED", "Knots", SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimVar("GROUND VELOCITY", "Knots", SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimVar("VELOCITY BODY X", "Feet per second", SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimVar("VELOCITY BODY Z", "Feet per second", SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimVar("G FORCE", "GForce", SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimVar("PLANE TOUCHDOWN NORMAL VELOCITY", "Feet per second", SIMCONNECT_DATATYPE.FLOAT64));
             //SHOW LRM
             winLRM = new LRMDisplay(viewModel);
             winLRM.Show();
+
+            
         }
 
         #region Reading and processing simconnect data
@@ -141,7 +145,7 @@ namespace GeesWPF
             {
                 try
                 {
-                    fsConnect.RequestData(Requests.PlaneInfo);
+                    fsConnect.RequestData(Requests.PlaneInfo, Requests.PlaneInfo);
                 }
                 catch
                 {
@@ -170,7 +174,7 @@ namespace GeesWPF
                 {
                     if (!ShowLanding)
                     {
-                        PlaneInfoResponse r = (PlaneInfoResponse)e.Data;
+                        PlaneInfoResponse r = (PlaneInfoResponse)e.Data.FirstOrDefault();
                         //ignore when noone is flying
                         if (r.ForwardSpeed < 4) //if less then 4kt, it's not a landing or out to menu
                         {
@@ -309,7 +313,7 @@ namespace GeesWPF
             {
                 try
                 {
-                    fsConnect.Connect("TestApp", "localhost", 500);
+                    fsConnect.Connect("TestApp", "localhost", 500, SimConnectProtocol.Ipv4);
                     fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Requests.PlaneInfo, definition);
                 }
                 catch { } // ignore
@@ -452,6 +456,5 @@ namespace GeesWPF
         }
 
         #endregion
-
     }
 }
