@@ -62,7 +62,7 @@
         </Image>
         <Image x:Name="image_Copy3" HorizontalAlignment="Left" Height="32" Margin="31,168,0,0" VerticalAlignment="Top" Width="32" Source="Images/slidew.png" RenderTransformOrigin="0.5,0.5"/>
         <Image x:Name="image1" HorizontalAlignment="Left" Height="260" Margin="311,0,-0.6,0" Width="40" Source="Images/chevron.png" Cursor="Hand" MouseDown="image1_MouseDown" Stretch="None"/>
-        <Button x:Name="button" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="5" Height="260" Background="#FFA8DADC" BorderBrush="{x:Null}" Cursor="SizeWE" Click="button_Click"/>
+        <Button x:Name="button" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="5" Height="260" Background="#FF191919" BorderBrush="{x:Null}" Cursor="SizeWE" Click="button_Click"/>
         <Label x:Name="labelBounces" Content="{Binding BouncesText}" HorizontalAlignment="Left" Margin="68,208,0,0" VerticalAlignment="Top" Foreground="#FFF1FAEE" FontSize="18"/>
         <Image x:Name="image_Copy2" HorizontalAlignment="Left" Height="32" Margin="31,210,0,0" VerticalAlignment="Top" Width="32" Source="Images/bounce.png" RenderTransformOrigin="0.5,0.5"/>
 

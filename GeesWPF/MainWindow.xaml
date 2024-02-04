@@ -7,7 +7,7 @@
         xmlns:properties="clr-namespace:GeesWPF.Properties"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="GeesWPF.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="490.8" Width="343.2" ResizeMode="NoResize" Background="#FF1D3557" Deactivated="Window_Deactivated" Topmost="True" WindowStyle="None" ShowInTaskbar="False">
+        Title="MainWindow" Height="490.8" Width="343.2" ResizeMode="NoResize" Background="#FF1D3557" Deactivated="Window_Deactivated" Topmost="True" WindowStyle="None" ShowInTaskbar="False" Loaded="Window_Loaded">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
         <Style TargetType="{x:Type Button}" x:Key="DarkButton">
@@ -31,7 +31,7 @@
     <Grid Margin="0,0,-0.2,0">
         <Label x:Name="title" Content="Gees" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFF1FAEE" FontSize="20"/>
         <Button x:Name="button" Content="Quit" HorizontalAlignment="Left" Margin="258,13,0,0" VerticalAlignment="Top" Width="75" Foreground="#FFF1FAEE" Height="37" Click="button_Click" Style="{DynamicResource DarkButton}"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="13,73,0,0" TextWrapping="Wrap" Text="In game landing analysis for Microsoft Flight Simulator 2020" VerticalAlignment="Top" Foreground="#FFF1FAEE" FontSize="16" Width="320">
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="13,97,0,0" TextWrapping="Wrap" Text="In game landing analysis for Microsoft Flight Simulator 2020" VerticalAlignment="Top" Foreground="#FFF1FAEE" FontSize="16" Width="320">
 
         </TextBlock>
         <Label x:Name="versionLabel" Content="{Binding Version}" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top" Foreground="#FFF1FAEE" RenderTransformOrigin="0.783,1.633"/>
@@ -62,5 +62,7 @@
             </Grid>
         </GroupBox>
         <Button x:Name="button_Hide" Content="Hide" HorizontalAlignment="Left" Margin="178,13,0,0" VerticalAlignment="Top" Width="75" Foreground="#FF1D3557" Height="37" Style="{DynamicResource DarkButton}" Background="#FFA8DADC" Click="button_Hide_Click"/>
+        <CheckBox x:Name="checkBox_start_minimized" Content="Start minimized" Margin="178,55,10,0" VerticalAlignment="Top" Foreground="#FFF1FAEE" IsChecked="{Binding StartMinimized, Mode=TwoWay, Source={x:Static properties:Settings.Default}}" Checked="checkBox_Checked"/>
+        <CheckBox x:Name="checkBox_close_with_sim" Content="Close with sim" Margin="178,75,10,0" VerticalAlignment="Top" Foreground="#FFF1FAEE" IsChecked="{Binding CloseWithSim, Mode=TwoWay, Source={x:Static properties:Settings.Default}}" Checked="checkBox_Checked"/>
     </Grid>
 </Window>
